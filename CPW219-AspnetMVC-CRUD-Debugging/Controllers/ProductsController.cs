@@ -13,11 +13,13 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Product.ToListAsync());
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -34,6 +36,7 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Controllers
             return View(product);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var product = await _context.Product.FindAsync(id);
@@ -57,6 +60,7 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Controllers
             return View(product);
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _context.Product
@@ -75,6 +79,8 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Controllers
         {
             var product = await _context.Product.FindAsync(id);
             _context.Product.Remove(product);
+
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

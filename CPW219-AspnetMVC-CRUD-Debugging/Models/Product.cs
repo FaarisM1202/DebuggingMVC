@@ -11,6 +11,7 @@ namespace CPW219_AspnetMVC_CRUD_Debugging.Models
         [StringLength(35)]
         public string Name { get; set; }
 
+        [Required]
         [DataType(DataType.Currency)]
         public double Price { get; set; }
 
